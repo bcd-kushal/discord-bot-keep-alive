@@ -1,12 +1,19 @@
 import flask
 import discord
+import os
 from discord import app_commands
 from discord.ext import commands
+from dotenv import load_dotenv
 
 from bot_ping import bot_ping
+from server import run_server
 
 
 # ==[ DISCORD CODE ]===========================================================
+
+load_dotenv()
+DISCORD_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+
 
 class Client(commands.Bot):
     def __init__(self):
@@ -31,18 +38,5 @@ async def ping_check(interaction:discord.Interaction):
 
 
 
-# ==[ FLASK CODE ]===========================================================
-
-app = flask.Flask(__name__)
-
-
-@app.route('/', methods=['GET'])
-def keep_running():
-    if flask.request.method == "GET":
-        return flask.jsonify({ "status": "success", "data": "successfully called this API." }), 200
-    else:
-        return flask.jsonify({ "status": "failure", "data": "only GET requests supported" }), 405
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
-    
+run_server()
+client.run(DISCORD_TOKEN)

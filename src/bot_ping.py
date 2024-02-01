@@ -1,6 +1,7 @@
 import discord
 import time 
 
+
 async def bot_ping(interaction:discord.Interaction,client):
     start_time = time.time()
     await interaction.response.send_message(content='_pinging..._',ephemeral=True)
