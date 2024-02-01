@@ -10,3 +10,4 @@ frozenlist
 idna
 multidict
 yarl
+python-dotenv
