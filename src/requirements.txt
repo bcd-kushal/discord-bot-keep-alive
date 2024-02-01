@@ -1,4 +1,3 @@
-Flask
 gunicorn
 discord.py
 aiohttp
