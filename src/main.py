@@ -1,4 +1,3 @@
-import flask
 import discord
 import os
 from discord import app_commands
@@ -6,7 +5,6 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from bot_ping import bot_ping
-from server import run_server
 
 
 # ==[ DISCORD CODE ]===========================================================
@@ -38,5 +36,4 @@ async def ping_check(interaction:discord.Interaction):
 
 
 
-run_server()
 client.run(DISCORD_TOKEN)
