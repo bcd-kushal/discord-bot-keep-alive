@@ -1,17 +1,11 @@
-from flask import Flask, jsonify, request
-from threading import Thread as T
+import flask
 
 import discord
 from discord import app_commands
 from discord.ext import commands
 
-import os
-import threading
-import asyncio
-
 
 from bot_ping import bot_ping
-from shutdown import shut_command
 
 
 
@@ -55,14 +49,14 @@ client.run("MTEwNjY2OTAxOTYzNDg4MDUzMg.GSdVJ5.dvPm6t_fm0ck37tLakSgY0xGT9nJuFIbn4
 
 #====== flask thingies ==========================================================
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def keep_running():
-    if request.method == "GET":
-        return jsonify({ "status": "success", "data": "successfully called this API." }), 200
+    if flask.request.method == "GET":
+        return flask.jsonify({ "status": "success", "data": "successfully called this API." }), 200
     else:
-        return jsonify({ "status": "failure", "data": "only GET requests supported" }), 405
+        return flask.jsonify({ "status": "failure", "data": "only GET requests supported" }), 405
 
 
 
